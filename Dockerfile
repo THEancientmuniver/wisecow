@@ -1,20 +1,18 @@
-# Use the official Node.js image as the base image
+# Use the official Node.js 14 image.
 FROM node:14
 
-# Set the working directory inside the container
+# Create and change to the app directory.
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
+# Copy application dependency manifests to the container image.
+# A wildcard is used to ensure both package.json AND package-lock.json are copied.
 COPY package*.json ./
 
-# Install application dependencies
+# Install production dependencies.
 RUN npm install
 
-# Copy the rest of the application files
+# Copy local code to the container image.
 COPY . .
 
-# Expose the port on which the app will run
-EXPOSE 3000
-
-# Command to run the application
-CMD ["node", "app.js"]
+# Run the web service on container startup.
+CMD [ "node", "app.js" ]

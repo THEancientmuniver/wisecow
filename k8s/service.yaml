@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: wisecow-app
 spec:
-  type: LoadBalancer
-  ports:
-  - port: 3000
-    targetPort: 3000
+  type: NodePort
   selector:
-    app: wisecow
+    app: wisecow-app
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30001  # You can choose a port between 30000-32767

@@ -1,0 +1,1 @@
+[Convert]::ToBase64String([System.IO.File]::ReadAllBytes(C:\Users\Radhey\.kube\config)) | Set-Clipboard
